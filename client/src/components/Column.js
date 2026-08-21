@@ -1,4 +1,5 @@
- import React from 'react';
+import React from 'react';
+import TaskCard from './TaskCard';
 
 function Column({ title, tasks }) {
   return (
@@ -6,9 +7,7 @@ function Column({ title, tasks }) {
       <h2>{title}</h2>
       <div className="column-tasks">
         {tasks.map((task) => (
-          <div key={task.id} className="task-placeholder">
-            {task.title}
-          </div>
+          <TaskCard key={task.id} title={task.title} />
         ))}
       </div>
     </div>
