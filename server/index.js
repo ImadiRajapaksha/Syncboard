@@ -69,6 +69,14 @@ app.put("/api/tasks/:id", (req, res) => {
   res.json(task);
 });
 
+// DELETE a task
+app.delete("/api/tasks/:id", (req, res) => {
+  const index = tasks.findIndex((t) => t.id === req.params.id);
+  if (index === -1) return res.status(404).json({ error: "Task not found" });
+  tasks.splice(index, 1);
+  res.status(204).send();
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
