@@ -11,7 +11,7 @@ let boards = [
 ];
 
 let tasks = [
-  { id: "1", boardId: "board1", columnId: "todo", title: "Design wireframes" },
+  { id: "1", boardId: "board1", columnId: "todo", title: " Design wireframes v2" },
   { id: "2", boardId: "board1", columnId: "todo", title: "Set up repo" },
   { id: "3", boardId: "board1", columnId: "doing", title: "Build Board component" },
 ];
