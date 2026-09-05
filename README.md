@@ -69,11 +69,38 @@ A Postman collection covering all endpoints is available at `api-docs/SyncBoard 
 
 ### Running the full app (frontend + backend)
 
+### Running the full app (frontend + backend)
+
 1. Start the backend (see above) — leave it running.
 2. In a separate terminal, start the frontend:
-   \`\`\`
-   cd Syncboard/client
-   npm install
-   npm start
-   \`\`\`
-3. Open [http://localhost:3000](http://localhost:3000) — the board will load data live from the backend API.
+
+```bash
+cd Syncboard/client
+npm install
+npm start
+```
+
+3. Open http://localhost:3000 — the board will load data live from the backend API.## Database
+
+SyncBoard uses MongoDB Atlas (free tier) via Mongoose. Boards and Tasks are stored as documents; Tasks reference their parent Board by ID. A schema diagram is available at docs/schema-diagram.png.
+
+### Setting up your own database connection
+
+1. Create a free MongoDB Atlas account and cluster.
+2. Create a `.env` file inside the server folder (not committed to Git) containing:
+
+```env
+MONGODB_URI=your-connection-string-here
+JWT_SECRET=your-secret-string-here
+PORT=5000
+```
+
+3. Ask a team member for the shared connection string during development, or set up your own cluster.
+
+### Seeding sample data
+
+```bash
+cd Syncboard/server
+node seed.js
+```
+
