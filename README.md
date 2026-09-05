@@ -32,7 +32,7 @@ A Kanban-style team task board — full-stack workshop project.
 
 ## Backend API
 
-The backend is an Express server providing REST endpoints for boards and tasks (currently using mock data — MongoDB integration is planned for a later milestone).
+The backend is an Express server providing REST endpoints for boards and tasks, backed by MongoDB Atlas via Mongoose.
 
 ### Running the backend
 
