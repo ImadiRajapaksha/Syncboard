@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "641ce85c-c632-41de-bfd9-1d9a277a5ed8",
+    "_postman_id": "594c4d77-d442-4a9d-936c-6a91ba3a0fd9",
     "name": "SyncBoard API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "57804654",
-    "_collection_link": "https://go.postman.co/collection/57804654-641ce85c-c632-41de-bfd9-1d9a277a5ed8?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/57804654-594c4d77-d442-4a9d-936c-6a91ba3a0fd9?source=collection_link"
   },
   "item": [
     {
@@ -98,7 +98,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"title\": \"Updated task title\"\r\n}",
+          "raw": "{\r\n  \"title\": \"Updated title\",\r\n  \"version\": 0\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -137,6 +137,66 @@
             "api",
             "tasks",
             "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@syncboard.com\",\r\n  \"password\": \"test1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"test@syncboard.com\",\r\n  \"password\": \"test1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
           ]
         }
       },
