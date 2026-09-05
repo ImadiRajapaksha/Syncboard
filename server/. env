@@ -1,2 +1,0 @@
-MONGODB_URI=mongodb://rajapakshaimadi25_db_user:rajapakshaimadi25@ac-6ltazun-shard-00-00.mutgg6r.mongodb.net:27017,ac-6ltazun-shard-00-01.mutgg6r.mongodb.net:27017,ac-6ltazun-shard-00-02.mutgg6r.mongodb.net:27017/syncboard?ssl=true&replicaSet=atlas-2bmws9-shard-0&authSource=admin&appName=SyncBoardCluster
-PORT=5000
