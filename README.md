@@ -4,11 +4,11 @@ A Kanban-style team task board — full-stack workshop project.
 
 ## Team
 
-- Rajapaksha I A (36297) — Project setup, Board component
-- Arachchi W A S G T W (37325) — Column component, mock data
-- Kavindya E M S (36076) — TaskCard component, styling
-- Gimhani K H H T (37307) — Wireframe and component tree diagram
-- Thejali D A S K (34939) — README
+- Rajapaksha I A (36297) — MongoDB Atlas setup, Mongoose connection, backend restructure (routes/controllers/models)
+- Arachchi W A S G T W (37325) — Task model and controller (MongoDB CRUD)
+- Kavindya E M S (36076) — Version-based conflict detection, schema diagram
+- Gimhani K H H T (37307) — JWT authentication (register, login, protected routes)
+- Thejali D A S K (34939) — README updates, database documentation, Postman collection
 
 ## How to Run
 
@@ -69,8 +69,6 @@ A Postman collection covering all endpoints is available at `api-docs/SyncBoard 
 
 ### Running the full app (frontend + backend)
 
-### Running the full app (frontend + backend)
-
 1. Start the backend (see above) — leave it running.
 2. In a separate terminal, start the frontend:
 
@@ -103,4 +101,3 @@ PORT=5000
 cd Syncboard/server
 node seed.js
 ```
-

@@ -1,6 +1,7 @@
 const Task = require("../models/Task");
 
-exports.getTasks = async (req, res) => {
+// GET all tasks
+exports.getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
     res.json(tasks);
@@ -9,6 +10,29 @@ exports.getTasks = async (req, res) => {
   }
 };
 
+// GET single task
+exports.getTaskById = async (req, res) => {
+  try {
+    const task = await Task.findById(req.params.id);
+    if (!task) return res.status(404).json({ error: "Task not found" });
+    res.json(task);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// CREATE a task
+exports.createTask = async (req, res) => {
+  try {
+    const { boardId, columnId, title } = req.body;
+    const task = await Task.create({ boardId, columnId, title });
+    res.status(201).json(task);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// UPDATE a task (with version-based conflict detection)
 exports.updateTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
@@ -29,6 +53,17 @@ exports.updateTask = async (req, res) => {
 
     await task.save();
     res.json(task);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// DELETE a task
+exports.deleteTask = async (req, res) => {
+  try {
+    const task = await Task.findByIdAndDelete(req.params.id);
+    if (!task) return res.status(404).json({ error: "Task not found" });
+    res.status(204).send();
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

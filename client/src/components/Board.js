@@ -7,9 +7,18 @@ function Board() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/boards/board1/columns")
+    fetch("http://localhost:5000/api/boards")
       .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch board data");
+        if (!res.ok) throw new Error("Failed to fetch boards");
+        return res.json();
+      })
+      .then((boards) => {
+        if (!boards.length) throw new Error("No boards found");
+        const boardId = boards[0]._id;
+        return fetch(`http://localhost:5000/api/boards/${boardId}/columns`);
+      })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch board columns");
         return res.json();
       })
       .then((data) => {
