@@ -54,7 +54,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:5000/api/boards/<paste your real board ID here>/columns",
+          "raw": "http://localhost:5000/api/boards/6a97dfbe9a9609632c784daf/columns",
           "protocol": "http",
           "host": [
             "localhost"
@@ -63,7 +63,7 @@
           "path": [
             "api",
             "boards",
-            "<paste your real board ID here>",
+            "6a97dfbe9a9609632c784daf",
             "columns"
           ]
         }
