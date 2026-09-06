@@ -78,7 +78,9 @@ npm install
 npm start
 ```
 
-3. Open http://localhost:3000 — the board will load data live from the backend API.## Database
+3. Open http://localhost:3000 — the board will load data live from the backend API.
+
+## Database
 
 SyncBoard uses MongoDB Atlas (free tier) via Mongoose. Boards and Tasks are stored as documents; Tasks reference their parent Board by ID. A schema diagram is available at docs/schema-diagram.png.
 
