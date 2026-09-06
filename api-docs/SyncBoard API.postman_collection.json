@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "83628ef1-31b1-4ed9-bc23-45d5761c71dc",
+    "_postman_id": "c743a56a-d2ea-4e7f-ad74-c2ffceb4a10f",
     "name": "SyncBoard API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "57811752",
-    "_collection_link": "https://go.postman.co/collection/57811752-83628ef1-31b1-4ed9-bc23-45d5761c71dc?source=collection_link"
+    "_collection_link": "https://go.postman.co/collection/57811752-c743a56a-d2ea-4e7f-ad74-c2ffceb4a10f?source=collection_link"
   },
   "item": [
     {
@@ -186,6 +186,69 @@
             "api",
             "tasks",
             "6a9d0563f97c3cfad2c9db5a"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"email\": \"test3@syncboard.com\", \"password\": \"test1234\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"email\": \"test@syncboard.com\", \"password\": \"test1234\" }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "auth",
+            "login"
           ]
         }
       },
