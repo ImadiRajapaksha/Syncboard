@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Column from './Column';
 
-function Board() {
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
+function Board({ token }) {
   const [columns, setColumns] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/boards")
+    const headers = { Authorization: `Bearer ${token}` };
+    fetch(`${API_URL}/api/boards`, { headers })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch boards");
         return res.json();
@@ -15,21 +18,15 @@ function Board() {
       .then((boards) => {
         if (!boards.length) throw new Error("No boards found");
         const boardId = boards[0]._id;
-        return fetch(`http://localhost:5000/api/boards/${boardId}/columns`);
+        return fetch(`${API_URL}/api/boards/${boardId}/columns`, { headers });
       })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch board columns");
         return res.json();
       })
-      .then((data) => {
-        setColumns(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
+      .then((data) => { setColumns(data); setLoading(false); })
+      .catch((err) => { setError(err.message); setLoading(false); });
+  }, [token]);
 
   if (loading) return <div className="board"><h1>SyncBoard</h1><p>Loading…</p></div>;
   if (error) return <div className="board"><h1>SyncBoard</h1><p>Error: {error}</p></div>;
