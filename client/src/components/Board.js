@@ -37,9 +37,10 @@ function Board({ token }) {
       .catch((err) => { setError(err.message); setLoading(false); });
   }, [token, fetchColumns]);
 
-    useEffect(() => {
+      useEffect(() => {
     if (!boardId) return;
-       const refresh = () => fetchColumns(boardId);
+    const socket = io(API_URL);
+    const refresh = () => fetchColumns(boardId);
     socket.on("task:created", refresh);
     socket.on("task:updated", refresh);
     socket.on("task:deleted", refresh);
