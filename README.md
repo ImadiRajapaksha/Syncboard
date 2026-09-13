@@ -1,5 +1,7 @@
 # SyncBoard
 
+![CI](https://github.com/ImadiRajapaksha/Syncboard/actions/workflows/ci.yml/badge.svg)
+
 A Kanban-style team task board — full-stack workshop project.
 
 ## Team
@@ -29,6 +31,22 @@ A Kanban-style team task board — full-stack workshop project.
    npm start
    \\\`
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Running Tests
+
+**Server:**
+\`\`\`
+cd server
+npm test
+\`\`\`
+
+**Client:**
+\`\`\`
+cd client
+npm test -- --watchAll=false
+\`\`\`
+
+Both suites also run automatically on every push and pull request via GitHub Actions.
 
 ## Backend API
 
