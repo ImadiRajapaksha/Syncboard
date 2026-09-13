@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.offline-banner {
+  background: #fff3cd;
+  color: #856404;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
