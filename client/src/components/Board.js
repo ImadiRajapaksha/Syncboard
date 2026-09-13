@@ -22,7 +22,7 @@ function saveCache(boardId, columns) {
   }
 }
 
-function Board({ token }) {
+function Board({ token, onLogout }) {
   const cached = loadCache();
   const [columns, setColumns] = useState(cached ? cached.columns : []);
   const [boardId, setBoardId] = useState(cached ? cached.boardId : null);
@@ -34,6 +34,7 @@ function Board({ token }) {
     const headers = { Authorization: `Bearer ${token}` };
     fetch(`${API_URL}/api/boards/${id}/columns`, { headers })
       .then((res) => {
+        if (res.status === 401) { onLogout(); return Promise.reject(new Error("__handled__")); }
         if (!res.ok) throw new Error("Failed to fetch board columns");
         return res.json();
       })
@@ -44,6 +45,7 @@ function Board({ token }) {
         saveCache(id, data);
       })
       .catch((err) => {
+        if (err.message === "__handled__") return;
         if (cached) {
           setOffline(true);
           setLoading(false);
@@ -52,12 +54,13 @@ function Board({ token }) {
           setLoading(false);
         }
       });
-  }, [token, cached]);
+  }, [token, cached, onLogout]);
 
   useEffect(() => {
     const headers = { Authorization: `Bearer ${token}` };
     fetch(`${API_URL}/api/boards`, { headers })
       .then((res) => {
+        if (res.status === 401) { onLogout(); return Promise.reject(new Error("__handled__")); }
         if (!res.ok) throw new Error("Failed to fetch boards");
         return res.json();
       })
@@ -68,6 +71,7 @@ function Board({ token }) {
         fetchColumns(id);
       })
       .catch((err) => {
+        if (err.message === "__handled__") return;
         if (!cached) {
           setError(err.message);
           setLoading(false);
@@ -75,7 +79,7 @@ function Board({ token }) {
           setOffline(true);
         }
       });
-  }, [token, fetchColumns, cached]);
+  }, [token, fetchColumns, cached, onLogout]);
 
   useEffect(() => {
     if (!boardId) return;
@@ -92,10 +96,13 @@ function Board({ token }) {
 
   return (
     <div className="board">
-      <h1>SyncBoard</h1>
+      <div className="board-header">
+        <h1>SyncBoard</h1>
+        <button onClick={onLogout} className="logout-btn">Log Out</button>
+      </div>
       {offline && <p className="offline-banner">Showing cached data — couldn't reach the server.</p>}
       <div className="board-columns">
-                        {columns.map((column) => (
+        {columns.map((column) => (
           <Column
             key={column.id}
             id={column.id}
