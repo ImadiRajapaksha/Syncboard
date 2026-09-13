@@ -95,8 +95,15 @@ function Board({ token }) {
       <h1>SyncBoard</h1>
       {offline && <p className="offline-banner">Showing cached data — couldn't reach the server.</p>}
       <div className="board-columns">
-        {columns.map((column) => (
-          <Column key={column.id} title={column.title} tasks={column.tasks} />
+                {columns.map((column) => (
+          <Column
+            key={column.id}
+            id={column.id}
+            title={column.title}
+            tasks={column.tasks}
+            token={token}
+            boardId={boardId}
+          />
         ))}
       </div>
     </div>
