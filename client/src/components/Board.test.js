@@ -22,7 +22,7 @@ test('renders columns and tasks once data loads', async () => {
     return Promise.resolve({ ok: true, json: async () => [{ _id: 'board1' }] });
   });
 
-  render(<Board token="fake-token" />);
+  render(<Board token="fake-token" onLogout={() => {}} />);
 
   expect(await screen.findByText('To Do')).toBeInTheDocument();
   expect(screen.getByText('Write tests')).toBeInTheDocument();
@@ -38,6 +38,6 @@ test('shows cached data immediately if present in localStorage', () => {
     })
   );
   global.fetch = jest.fn(() => new Promise(() => {}));
-  render(<Board token="fake-token" />);
+  render(<Board token="fake-token" onLogout={() => {}} />);
   expect(screen.getByText('To Do')).toBeInTheDocument();
 });
