@@ -8,7 +8,7 @@ let mongoServer;
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
   await mongoose.connect(mongoServer.getUri());
-});
+}, 60000);
 
 afterEach(async () => {
   const collections = mongoose.connection.collections;
